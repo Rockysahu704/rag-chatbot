@@ -68,3 +68,9 @@ rag-chatbot/
 ├── requirements.txt
 │
 └── README.md
+
+## Generated Answer
+![Answer](screenshots/Screenshot_1.png)
+
+## Retrieved Chunks
+![Chunks](screenshots/Screenshot_2.png)
