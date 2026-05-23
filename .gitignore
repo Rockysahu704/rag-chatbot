@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+
+# Environment Variables
+.env
+
+# Streamlit
+.streamlit/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
+
+# Vector Database
+vector_db/faiss.index
+vector_db/chunks.pkl
+
+# Uploaded PDFs
+data/pdfs/
+
+# Uploaded Images/Audio
+uploads/
+
+# Reports
+reports/
+
+# Cache
+.cache/
+
+# Temporary Files
+*.tmp
+
+# Python Build Files
+build/
+dist/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Ollama Cache (Optional)
+ollama/
+
+# Streamlit Cache
+.streamlit/secrets.toml
+
+# Windows
+Thumbs.db
+desktop.ini

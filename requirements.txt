@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+streamlit
+langchain
+langchain-community
+sentence-transformers
+faiss-cpu
+pymupdf
+pdfplumber
+pytesseract
+pillow
+python-multipart
+ollama
+numpy
+pandas
+langchain-text-splitters
