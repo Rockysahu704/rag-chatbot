@@ -2,15 +2,16 @@ from sentence_transformers import SentenceTransformer
 import numpy as np
 import vector_store
 
+# Load embedding model
 model = SentenceTransformer("BAAI/bge-small-en-v1.5")
 
 
-def search(query, top_k=10):
+def search(query, top_k=5):
 
-    # Create query embedding
+    # Create embedding for user query
     query_embedding = model.encode([query])
 
-    # Search FAISS index
+    # Search FAISS vector database
     distances, indices = vector_store.index.search(
         np.array(query_embedding).astype("float32"),
         top_k
@@ -18,29 +19,24 @@ def search(query, top_k=10):
 
     results = []
 
-    # Track used files
-    used_files = set()
-
+    # Collect retrieved chunks
     for i, idx in enumerate(indices[0]):
+
+        # Skip invalid indexes
+        if idx == -1:
+            continue
 
         chunk = vector_store.stored_chunks[idx]
 
-        # Safe filename handling
-        filename = chunk.get("filename", "Unknown Document")
+        # Add similarity score
+        chunk["score"] = float(distances[0][i])
 
-        # Diversify retrieval across PDFs
-        if filename not in used_files:
+        # Safe filename fallback
+        chunk["filename"] = chunk.get(
+            "filename",
+            "Unknown Document"
+        )
 
-            chunk["score"] = float(distances[0][i])
-
-            chunk["filename"] = filename
-
-            results.append(chunk)
-
-            used_files.add(filename)
-
-        # Final limit
-        if len(results) >= 5:
-            break
+        results.append(chunk)
 
     return results
