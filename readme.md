@@ -72,5 +72,5 @@ rag-chatbot/
 ## Generated Answer
 ![Answer](screenshots/Screenshot_1.png)
 
-## Retrieved Chunks
+## Retrieved Chunks.
 ![Chunks](screenshots/Screenshot_2.png)
